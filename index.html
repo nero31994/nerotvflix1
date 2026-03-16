@@ -1,46 +1,44 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NXB Streaming App</title>
+<title>NXB Streaming App</title><style>
 
-<style>
-
-html,body{
+body{
 margin:0;
-height:100%;
-overflow:hidden;
-font-family:Arial, Helvetica, sans-serif;
+font-family:Arial,Helvetica,sans-serif;
 background:#141414;
 color:white;
 }
 
-/* PAGE LAYOUT */
-
-.wrapper{
-height:100vh;
-display:flex;
-flex-direction:column;
-}
-
-/* HERO */
+/* HERO SECTION */
 
 .hero{
-flex:1;
 display:flex;
+flex-direction:column;
 align-items:center;
 justify-content:center;
-background:linear-gradient(to top,#141414,rgba(0,0,0,0.4)),
+padding:40px 20px;
+background:linear-gradient(to top,#141414,rgba(0,0,0,0.5)),
 url("https://raw.githubusercontent.com/Sasuw30/User/refs/heads/main/IMG_20260316_141353.jpg");
 background-size:cover;
 background-position:center;
-text-align:center;
 }
 
-.hero-content{
-max-width:500px;
-padding:20px;
+/* HERO LAYOUT */
+
+.hero-inner{
+display:flex;
+align-items:center;
+gap:40px;
+max-width:1100px;
+width:100%;
+}
+
+/* HERO TEXT */
+
+.hero-text{
+flex:1;
 }
 
 .logo{
@@ -61,73 +59,76 @@ margin-bottom:20px;
 /* DOWNLOAD BUTTON */
 
 .download-btn{
-position:relative;
-background:linear-gradient(45deg,#e50914,#ff1e2d);
+background:linear-gradient(45deg,#e50914,#ff2a2a);
 border:none;
 color:white;
-padding:16px 42px;
+padding:16px 38px;
 font-size:18px;
 border-radius:8px;
 cursor:pointer;
-overflow:hidden;
-transition:.35s;
-box-shadow:0 0 10px rgba(229,9,20,.6);
-animation:pulse 2.5s infinite;
+transition:.3s;
+box-shadow:0 0 15px rgba(229,9,20,.6);
 }
 
 .download-btn:hover{
-transform:translateY(-3px) scale(1.05);
-box-shadow:0 0 20px rgba(229,9,20,.9),
-0 0 40px rgba(229,9,20,.6);
-}
-
-.download-btn:active{
-transform:scale(.95);
-}
-
-@keyframes pulse{
-0%{box-shadow:0 0 10px rgba(229,9,20,.5);}
-50%{box-shadow:0 0 25px rgba(229,9,20,.9);}
-100%{box-shadow:0 0 10px rgba(229,9,20,.5);}
+transform:scale(1.05);
+box-shadow:0 0 25px rgba(229,9,20,.9);
 }
 
 /* DOWNLOAD PROGRESS */
 
-.progress-container{
-margin-top:10px;
-font-family:monospace;
-font-size:16px;
+.progress{
+margin-top:12px;
+width:100%;
+max-width:260px;
 }
 
-/* PREVIEW */
-
-.preview{
-height:45%;
-padding:20px;
-box-sizing:border-box;
+.bar{
+width:100%;
+height:6px;
+background:#333;
+border-radius:20px;
+overflow:hidden;
 }
 
-/* SLIDER */
-
-.slider{
-position:relative;
+.fill{
 height:100%;
+width:0%;
+background:#e50914;
+transition:width .3s;
+}
+
+.percent{
+font-size:13px;
+color:#bbb;
+margin-top:5px;
+}
+
+/* SCREENSHOT CAROUSEL */
+
+.carousel{
+flex:1;
+position:relative;
 overflow:hidden;
 border-radius:12px;
-background:#000;
+background:black;
+width:100%;
+max-width:420px;
+height:260px;
 }
 
 .slides{
 display:flex;
 height:100%;
-transition:transform .5s ease;
+transition:transform .5s;
 }
 
 .slides img{
-flex:0 0 100%;
 width:100%;
 height:100%;
+flex:0 0 100%;
 object-fit:contain;
+object-position:center;
 background:#000;
 }
 
@@ -140,148 +141,207 @@ transform:translateY(-50%);
 background:rgba(0,0,0,.6);
 border:none;
 color:white;
-font-size:28px;
-padding:6px 14px;
+font-size:24px;
+padding:8px 12px;
 cursor:pointer;
-border-radius:4px;
 }
 
 .prev{left:10px;}
 .next{right:10px;}
 
+/* FEATURES SECTION */
+
+.features{
+padding:60px 20px;
+background:#181818;
+text-align:center;
+}
+
+.features h2{
+font-size:28px;
+margin-bottom:40px;
+}
+
+.feature-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:30px;
+max-width:1000px;
+margin:auto;
+}
+
+.feature{
+background:#202020;
+padding:25px;
+border-radius:10px;
+transition:.3s;
+}
+
+.feature:hover{
+transform:translateY(-6px);
+background:#252525;
+}
+
+.feature h3{
+margin-bottom:10px;
+}
+
 /* FOOTER */
 
 .footer{
 text-align:center;
-padding:8px;
+padding:20px;
 font-size:13px;
 color:#888;
 }
 
-</style>
-</head>
+/* MOBILE */
 
-<body>
+@media (max-width:900px){
 
-<div class="wrapper">
+.hero-inner{
+flex-direction:column;
+text-align:center;
+}
 
-<!-- HERO -->
+.carousel{
+width:100%;
+max-width:100%;
+height:240px;
+}
 
-<div class="hero">
+}
 
-<div class="hero-content">
+/* LANDSCAPE IMPROVEMENTS */
 
-<img src="https://i.ibb.co/4wH6jNS4/CC-20260316-120757.png" class="logo">
+@media (orientation:landscape){
 
-<h1>Unlimited Movies & TV</h1>
+.carousel{
+max-width:360px;
+height:220px;
+}
 
-<p>Watch movies, TV channels and entertainment anywhere.</p>
+.hero h1{
+font-size:28px;
+}
 
-<button class="download-btn" id="downloadBtn" onclick="downloadAPK()">
-📥 Download APK
-</button>
+.logo{
+width:90px;
+}
 
-</div>
+}
 
-</div>
-
-<!-- SCREENSHOT PREVIEW -->
-
-<div class="preview">
-
-<div class="slider">
-
-<div class="slides" id="slides">
-
-<img src="https://i.ibb.co/svg4913t/IMG-20260316-170250.jpg">
+</style></head><body><!-- HERO --><section class="hero"><div class="hero-inner"><div class="hero-text"><img src="https://i.ibb.co/4wH6jNS4/CC-20260316-120757.png" class="logo"><h1>Unlimited Movies & TV</h1><p>Watch live TV, movies and entertainment anywhere.</p><button class="download-btn" id="downloadBtn" onclick="downloadAPK()">
+Download APK
+</button><div id="version" style="margin-top:10px;color:#aaa;font-size:13px;">
+Checking latest version...
+</div></div><!-- SCREENSHOT CAROUSEL --><div class="carousel"><div class="slides" id="slides"><img src="https://i.ibb.co/svg4913t/IMG-20260316-170250.jpg">
 <img src="https://i.ibb.co/fVjXMjHg/IMG-20260316-170337.jpg">
 <img src="https://i.ibb.co/HLNJ7PgP/IMG-20260316-170307.jpg">
-<img src="https://i.ibb.co/QSqF9xp/IMG-20260316-170323.jpg">
-
-</div>
-
-<button class="nav prev" onclick="moveSlide(-1)">❮</button>
+<img src="https://i.ibb.co/QSqF9xp/IMG-20260316-170323.jpg"></div><button class="nav prev" onclick="moveSlide(-1)">❮</button>
 <button class="nav next" onclick="moveSlide(1)">❯</button>
 
-</div>
+</div></div></section><!-- FEATURES --><section class="features"><h2>App Features</h2><div class="feature-grid"><div class="feature">
+<h3>📺 Live TV Channels</h3>
+<p>Watch hundreds of IPTV channels worldwide.</p>
+</div><div class="feature">
+<h3>🎬 Movies & Series</h3>
+<p>Stream unlimited movies and TV shows.</p>
+</div><div class="feature">
+<h3>⚡ Fast Streaming</h3>
+<p>Optimized playback with adaptive streaming.</p>
+</div><div class="feature">
+<h3>📱 Android Optimized</h3>
+<p>Works perfectly on Android phones & TV.</p>
+</div></div></section><div class="footer">
+Android Devices Only • Secure Download
+</div><script>
 
-</div>
+/* CAROUSEL */
 
-<div class="footer">
-Android Devices Only • Safe Download
-</div>
-
-</div>
-
-<script>
-
-/* SLIDER */
-
-let index=0;
-
-const slides=document.getElementById("slides");
-const total=slides.children.length;
+let index=0
+const slides=document.getElementById("slides")
+const total=slides.children.length
 
 function showSlide(){
-slides.style.transform=`translateX(-${index*100}%)`;
+slides.style.transform=`translateX(-${index*100}%)`
 }
 
 function moveSlide(step){
 
-index+=step;
+index+=step
 
-if(index<0) index=total-1;
-if(index>=total) index=0;
+if(index<0) index=total-1
+if(index>=total) index=0
 
-showSlide();
+showSlide()
 
 }
 
-setInterval(()=>{moveSlide(1)},4000);
+setInterval(()=>moveSlide(1),4000)
 
-/* DOWNLOAD WITH PROGRESS */
+/* DOWNLOAD BUTTON */
 
 function downloadAPK(){
 
-const btn=document.getElementById("downloadBtn");
+const btn=document.getElementById("downloadBtn")
 
 if(!/android/i.test(navigator.userAgent)){
-alert("APK downloads are available for Android devices only.");
-return;
+alert("APK downloads are for Android devices only.")
+return
 }
 
-btn.disabled=true;
+btn.disabled=true
 
-btn.innerHTML="Downloading...<div class='progress-container' id='progress'>[░░░░░░░░░░]</div>";
+btn.innerHTML=`
+Downloading...
+<div class="progress">
+<div class="bar">
+<div class="fill" id="fill"></div>
+</div>
+<div class="percent" id="percent">0%</div>
+</div>
+`
 
-let progress=0;
-const total=10;
+let progress=0
 
 const interval=setInterval(()=>{
 
-progress++;
+progress+=4
 
-let bar="["+"█".repeat(progress)+"░".repeat(total-progress)+"]";
+document.getElementById("fill").style.width=progress+"%"
+document.getElementById("percent").innerText=progress+"%"
 
-document.getElementById("progress").innerText=bar;
+if(progress>=100){
 
-if(progress===total){
+clearInterval(interval)
 
-clearInterval(interval);
-
-btn.innerHTML="⏳ Download Started";
+btn.innerHTML="Starting Download..."
 
 setTimeout(()=>{
-window.location.href="https://github.com/Sasuw30/myapp/releases/download/NeroTVflix/NeroTVflix.v.1.1.apk";
-},800);
+window.location.href=apkUrl
+},700)
 
 }
 
-},200);
+},120)
 
 }
 
-</script>
+/* AUTO GET LATEST APK FROM GITHUB */
 
-</body>
+let apkUrl=""
+
+fetch("https://api.github.com/repos/Sasuw30/myapp/releases/latest")
+.then(res=>res.json())
+.then(data=>{
+
+const version=data.tag_name
+apkUrl=data.assets[0].browser_download_url
+
+document.getElementById("version").innerText="Latest Version: "+version
+
+})
+
+</script></body>
 </html>
