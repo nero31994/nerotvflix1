@@ -57,22 +57,22 @@ margin-bottom:20px;
 }
 
 /* DOWNLOAD BUTTON */
-
 .download-btn{
-background:linear-gradient(45deg,#e50914,#ff2a2a);
+background:linear-gradient(145deg,#d9d9d9,#ffffff,#c0c0c0);
+color:#111;
 border:none;
-color:white;
 padding:16px 38px;
 font-size:18px;
 border-radius:8px;
 cursor:pointer;
 transition:.3s;
-box-shadow:0 0 15px rgba(229,9,20,.6);
+box-shadow:0 4px 20px rgba(255,255,255,0.4),
+            inset 0 0 10px rgba(255,255,255,0.6);
 }
 
 .download-btn:hover{
 transform:scale(1.05);
-box-shadow:0 0 25px rgba(229,9,20,.9);
+box-shadow:0 0 25px rgba(255,255,255,.9);
 }
 
 /* DOWNLOAD PROGRESS */
@@ -94,7 +94,7 @@ overflow:hidden;
 .fill{
 height:100%;
 width:0%;
-background:#e50914;
+background:linear-gradient(90deg,#cccccc,#ffffff);
 transition:width .3s;
 }
 
@@ -114,7 +114,7 @@ border-radius:12px;
 background:black;
 width:100%;
 max-width:420px;
-height:260px;
+height:130px;
 }
 
 .slides{
@@ -127,7 +127,7 @@ transition:transform .5s;
 width:100%;
 height:100%;
 flex:0 0 100%;
-object-fit:contain;
+object-fit: cover;
 object-position:center;
 background:#000;
 }
@@ -198,28 +198,26 @@ color:#888;
 /* MOBILE */
 
 @media (max-width:900px){
+  .hero-inner{
+    flex-direction:column;
+    text-align:center;
+  }
 
-.hero-inner{
-flex-direction:column;
-text-align:center;
+  .carousel{
+    width:100%;
+    max-width:100%;
+    height:160px;
+  }
 }
 
-.carousel{
-width:100%;
-max-width:100%;
-height:240px;
-}
-
-}
 
 /* LANDSCAPE IMPROVEMENTS */
 
 @media (orientation:landscape){
-
-.carousel{
-max-width:360px;
-height:220px;
-}
+  .carousel{
+    max-width:360px;
+    height:240px;
+  }
 
 .hero h1{
 font-size:28px;
@@ -229,21 +227,63 @@ font-size:28px;
 width:90px;
 }
 
+
+.hero-inner{
+backdrop-filter: blur(10px);
+background: rgba(0,0,0,0.4);
+padding:20px;
+border-radius:15px;
+}
+.download-btn{
+background: linear-gradient(135deg,#ffffff,#bfbfbf);
+color:#000;
+font-weight:bold;
+letter-spacing:1px;
+}
+}
+@keyframes glow {
+0% { box-shadow: 0 0 5px #fff; }
+50% { box-shadow: 0 0 20px #fff; }
+100% { box-shadow: 0 0 5px #fff; }
 }
 
-</style></head><body><!-- HERO --><section class="hero"><div class="hero-inner"><div class="hero-text"><img src="https://i.ibb.co/4wH6jNS4/CC-20260316-120757.png" class="logo"><h1>Unlimited Movies & TV</h1><p>Watch live TV, movies and entertainment anywhere.</p><button class="download-btn" id="downloadBtn" onclick="downloadAPK()">
+.download-btn{
+animation: glow 2s infinite;
+}
+@media (max-width:600px){
+.hero h1{
+font-size:24px;
+}
+
+.hero p{
+font-size:14px;
+}
+
+.download-btn{
+width:100%;
+}
+.slides{
+transition: transform 0.6s ease-in-out;
+}
+</style>
+</head>
+<body><!-- HERO --><section class="hero"><div class="hero-inner"><div class="hero-text">
+  <img class="logo" src="https://i.ibb.co/5XnLzLfW/CC-20260320-110058.png">
+  <h1>Unlimited Movies & TV</h1>
+<p>Watch live TV, movies and entertainment anywhere.</p><button class="download-btn" id="downloadBtn" onclick="downloadAPK()">
 Download APK
 </button><div id="version" style="margin-top:10px;color:#aaa;font-size:13px;">
 Checking latest version...
-</div></div><!-- SCREENSHOT CAROUSEL --><div class="carousel"><div class="slides" id="slides"><img src="https://i.ibb.co/svg4913t/IMG-20260316-170250.jpg">
-<img src="https://i.ibb.co/fVjXMjHg/IMG-20260316-170337.jpg">
-<img src="https://i.ibb.co/HLNJ7PgP/IMG-20260316-170307.jpg">
-<img src="https://i.ibb.co/QSqF9xp/IMG-20260316-170323.jpg"></div><button class="nav prev" onclick="moveSlide(-1)">❮</button>
+</div></div><!-- SCREENSHOT CAROUSEL --><div class="carousel"><div class="slides" id="slides">
+<img src="https://raw.githubusercontent.com/nero31994/nerotvflix1/refs/heads/main/IMG_20260319_221112.jpg">
+<img src="https://raw.githubusercontent.com/nero31994/nerotvflix1/refs/heads/main/IMG_20260319_221200.jpg">
+<img src="https://raw.githubusercontent.com/nero31994/nerotvflix1/refs/heads/main/IMG_20260319_221128.jpg">
+<img src="https://raw.githubusercontent.com/nero31994/nerotvflix1/refs/heads/main/IMG_20260319_221144.jpg"></div><button class="nav prev" onclick="moveSlide(-1)">❮</button>
 <button class="nav next" onclick="moveSlide(1)">❯</button>
 
 </div></div></section><!-- FEATURES --><section class="features"><h2>App Features</h2><div class="feature-grid"><div class="feature">
 <h3>📺 Live TV Channels</h3>
-<p>Watch hundreds of IPTV channels worldwide.</p>
+<p>Watch IPTV channels worldwide.</p>
 </div><div class="feature">
 <h3>🎬 Movies & Series</h3>
 <p>Stream unlimited movies and TV shows.</p>
@@ -256,7 +296,7 @@ Checking latest version...
 </div></div></section><div class="footer">
 Android Devices Only • Secure Download
 </div><script>
-
+document.getElementById("version").innerText="Loading latest version..."
 /* CAROUSEL */
 
 let index=0
@@ -284,63 +324,67 @@ setInterval(()=>moveSlide(1),4000)
 
 function downloadAPK(){
 
-const btn=document.getElementById("downloadBtn")
+  const btn = document.getElementById("downloadBtn")
 
-if(!/android/i.test(navigator.userAgent)){
-alert("APK downloads are for Android devices only.")
-return
+  if(!/android/i.test(navigator.userAgent)){
+    alert("APK downloads are for Android devices only.")
+    return
+  }
+
+  if(!apkUrl){
+    alert("Download link not ready yet.")
+    return
+  }
+
+  btn.disabled = true
+
+  btn.innerHTML=`
+  Downloading...
+  <div class="progress">
+    <div class="bar">
+      <div class="fill" id="fill"></div>
+    </div>
+    <div class="percent" id="percent">0%</div>
+  </div>
+  `
+
+  let progress=0
+
+  const interval=setInterval(()=>{
+
+    progress+=4
+
+    document.getElementById("fill").style.width=progress+"%"
+    document.getElementById("percent").innerText=progress+"%"
+
+    if(progress>=100){
+      clearInterval(interval)
+
+      btn.innerHTML="Starting Download..."
+
+      setTimeout(()=>{
+        window.location.href=apkUrl
+      },700)
+    }
+
+  },120)
 }
-
-btn.disabled=true
-
-btn.innerHTML=`
-Downloading...
-<div class="progress">
-<div class="bar">
-<div class="fill" id="fill"></div>
-</div>
-<div class="percent" id="percent">0%</div>
-</div>
-`
-
-let progress=0
-
-const interval=setInterval(()=>{
-
-progress+=4
-
-document.getElementById("fill").style.width=progress+"%"
-document.getElementById("percent").innerText=progress+"%"
-
-if(progress>=100){
-
-clearInterval(interval)
-
-btn.innerHTML="Starting Download..."
-
-setTimeout(()=>{
-window.location.href=apkUrl
-},700)
-
-}
-
-},120)
-
-}
-
 /* AUTO GET LATEST APK FROM GITHUB */
 
 let apkUrl=""
 
 fetch("https://api.github.com/repos/Sasuw30/myapp/releases/latest")
-.then(res=>res.json())
+.then(res=>{
+  if(!res.ok) throw new Error("API failed");
+  return res.json();
+})
 .then(data=>{
-
-const version=data.tag_name
-apkUrl=data.assets[0].browser_download_url
-
-document.getElementById("version").innerText="Latest Version: "+version
-
+  if(data.assets && data.assets.length > 0){
+    apkUrl=data.assets[0].browser_download_url
+  }
+})
+.catch(()=>{
+  document.getElementById("version").innerText="Version check failed"
 })
 
 </script></body>
